@@ -1,0 +1,28 @@
+<h1>Subjects</h1>
+
+<br>
+
+<button mat-raised-button color="primary" (click)="addSubject()"> <mat-icon>add</mat-icon> Add Subject</button>
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">S No.</th>
+        <th scope="col">Subject Code</th>
+        <th scope="col">Subject Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subject of theSubjects; let i = index">
+        <th>{{i+1}}</th>
+        <td>{{subject.subjectCode}}</td>
+        <td>{{subject.subjectName}}</td>
+        <td>   
+            <!-- <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button> -->
+            <button mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

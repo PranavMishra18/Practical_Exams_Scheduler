@@ -1,0 +1,27 @@
+
+<h1>
+    Create Time Slot
+</h1>
+<h3>Ex:- 1:10-2:55</h3>
+
+
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <mat-form-field>
+        <mat-label>Time Slot</mat-label>
+        <input type="text" name="timeSlot" ngModel #timeSlot="ngModel" matInput required>
+        <mat-error *ngIf="timeSlot.hasError('required')">Field cannot be empty.</mat-error>
+    </mat-form-field>
+
+    <br>
+    <br>
+
+      
+      <button type="submit" mat-raised-button color="primary" [disabled]="!f.valid">Submit</button>
+      &nbsp;
+      <a  mat-raised-button color="warn" (click)="goBack()">Back</a>
+</form>
+
+

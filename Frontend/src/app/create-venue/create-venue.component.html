@@ -1,0 +1,27 @@
+
+<h1>
+    Create Venue
+</h1>
+<h3>Ex:- 214C B1</h3>
+
+
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <mat-form-field>
+        <mat-label>Enter venue...</mat-label>
+        <input type="text" name="venue" ngModel #venue="ngModel" matInput required>
+        <mat-error *ngIf="venue.hasError('required')">Field cannot be empty.</mat-error>
+    </mat-form-field>
+
+    <br>
+    <br>
+
+      
+      <button type="submit" mat-raised-button color="primary" [disabled]="!f.valid">Submit</button>
+      &nbsp;
+      <a  mat-raised-button color="warn" (click)="goBack()">Back</a>
+</form>
+
+

@@ -1,0 +1,43 @@
+<h1>Time Table</h1>
+
+<br>
+
+<button mat-raised-button color="primary" (click)="addTimeTable()"> <mat-icon>add</mat-icon> Add Time Table</button>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">S No.</th>
+        <th scope="col">Day</th>
+        <th scope="col">Section</th>
+        <th scope="col">Student Group</th>
+        <th scope="col">Student</th>
+        <th scope="col">Year</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Teacher</th>
+        <th scope="col">Phone No.</th>
+        <th scope="col">Time Slot</th>
+        <th scope="col">Venue</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timeTable of theTimeTable; let i = index">
+        <th>{{i+1}}</th>
+        <td>{{timeTable.section}}</td>
+        <td>{{timeTable.day}}</td>
+        <td>{{timeTable.studentGroup}}</td>
+        <td>{{timeTable.students}}</td>
+        <td>{{timeTable.year}}</td>
+        <td>{{timeTable.subject.subjectName}}</td>
+        <td>{{timeTable.teacher.name}}</td>
+        <td>{{timeTable.teacher.phoneNo}}</td>
+        <td>{{timeTable.timeSlot.timeSlot}}</td>
+        <td>{{timeTable.venue.venue}}</td>
+        <td>   
+            <!-- <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button> -->
+            <button mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

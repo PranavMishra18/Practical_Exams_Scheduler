@@ -1,0 +1,35 @@
+
+<h1>
+    Create Subject
+</h1>
+<!-- <h3>Ex:- 214C B1</h3> -->
+
+
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <mat-form-field>
+        <mat-label>Subject Code</mat-label>
+        <input type="text" name="subjectCode" ngModel #subjectCode="ngModel" matInput required>
+        <mat-error *ngIf="subjectCode.hasError('required')">Field cannot be empty.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Subject Name</mat-label>
+        <input type="text" name="subjectName" ngModel #subjectName="ngModel" matInput required>
+        <mat-error *ngIf="subjectName.hasError('required')">Field cannot be empty.</mat-error>
+    </mat-form-field>
+
+    <br>
+    <br>
+
+      
+      <button type="submit" mat-raised-button color="primary" [disabled]="!f.valid">Submit</button>
+      &nbsp;
+      <a  mat-raised-button color="warn" (click)="goBack()">Back</a>
+</form>
+
+

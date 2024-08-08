@@ -1,0 +1,129 @@
+
+<h1>
+    Add Time Table
+</h1>
+
+
+
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <mat-form-field>
+        <mat-label>Year</mat-label>
+        <mat-select #year required>
+          
+            <mat-option value="1st">1st</mat-option>
+            <mat-option value="2nd">2nd</mat-option>
+            <mat-option value="3rd">3rd</mat-option>
+            <mat-option value="4th">4th</mat-option>
+          
+        </mat-select>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Day</mat-label>
+        <mat-select #day required>
+          
+            <mat-option value="Monday">Monday</mat-option>
+            <mat-option value="Tuesday">Tuesday</mat-option>
+            <mat-option value="Wednesday">Wednesday</mat-option>
+            <mat-option value="Thursday">Thursday</mat-option>
+            <mat-option value="Friday">Friday</mat-option>
+          
+        </mat-select>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Section</mat-label>
+        <input type="text" name="section" ngModel #section="ngModel" matInput required>
+        <mat-error *ngIf="section.hasError('required')">Field cannot be empty.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Group</mat-label>
+        <mat-select #studentGroup required>
+            <mat-option value="G1">G1</mat-option>
+            <mat-option value="G2">G2</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Students</mat-label>
+        <input type="text" name="students" ngModel #students="ngModel" matInput required>
+        <mat-error *ngIf="students.hasError('required')">Field cannot be empty.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Subject</mat-label>
+        <mat-select (selectionChange)="subjectChanged($event.value)" required>
+            <mat-option  *ngFor="let subject of subjects; let i = index;" [value]="subject.id">
+                {{ i+1 }}. {{ subject.subjectCode }} - {{ subject.subjectName }}
+              </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Teacher(Select subject first)</mat-label>
+        <mat-select (selectionChange)="teacherChanged($event.value)" required>
+            <mat-option  *ngFor="let teacher of teachers; let i = index;" [value]="teacher.id">
+                {{ i+1 }}. {{ teacher.name }}
+              </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Venue</mat-label>
+        <mat-select (selectionChange)="venueChanged($event.value)" required>
+            <mat-option  *ngFor="let venue of venues; let i = index;" [value]="venue.id">
+                {{ i+1 }}. {{ venue.venue }}
+              </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Time Slot</mat-label>
+        <mat-select (selectionChange)="timeSlotChanged($event.value)" required>
+            <mat-option  *ngFor="let timeSlot of timeSlots; let i = index;" [value]="timeSlot.id">
+                {{ i+1 }}. {{ timeSlot.timeSlot }}
+              </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <br>
+
+   
+
+    
+
+
+
+
+    <br>
+    <br>
+   
+      <button type="submit" mat-raised-button color="primary" [disabled]="!f.valid">Submit</button>
+      &nbsp;
+      <a  mat-raised-button color="warn" (click)="goBack()">Back</a>
+</form>
+
+<br>
+
+
+
