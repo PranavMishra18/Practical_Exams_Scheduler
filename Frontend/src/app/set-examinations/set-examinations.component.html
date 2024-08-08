@@ -1,0 +1,33 @@
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="DD-MM-YYYY" name="date" ngModel #date="ngModel">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
+        <br>
+
+        <button type="submit" mat-raised-button color="primary" >Submit</button>
+
+        <br>
+        <br>
+        <br>
+
+        <h2>Selected Days: </h2>
+
+        <ul>
+            <li *ngFor="let theDay of daysSelected">
+                
+                <h2>{{theDay.date}} - {{theDay.day}} <button id="checkButton" mat-mini-fab color="primary">
+                    <mat-icon>check</mat-icon></button></h2> 
+                
+            </li>
+        </ul>
+
+    </form>
+
+    
+

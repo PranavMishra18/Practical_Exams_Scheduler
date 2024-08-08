@@ -1,0 +1,47 @@
+<h1>Time Table</h1>
+
+
+<br>
+
+<button mat-raised-button color="primary" (click)="generateExcel()"> Generate Excel </button>
+
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">S No.</th>
+        <th scope="col">Subject Code</th>
+        <th scope="col">Subject(Lab)</th>
+        <th scope="col">Year</th>
+        <th scope="col">Section</th>
+        <th scope="col">Group</th>
+        <th scope="col">No of Students</th>
+        <th scope="col">Internal Examiner</th>
+        <th scope="col">External Examiner</th>
+        <th scope="col">M.No</th>
+        <th scope="col">Email</th>
+        <th scope="col">Time</th>
+        <th scope="col">Date</th>
+        <th scope="col">Lab</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="content" *ngFor="let examinations of theExaminations; let i = index">
+        <th>{{i+1}}</th>
+        <td>{{examinations.subject.subjectCode}}</td>
+        <td>{{examinations.subject.subjectName}}</td>
+        <td>{{examinations.year}}</td>
+        <td>{{examinations.section}}</td>
+        <td>{{examinations.studentGroup}}</td>
+        <td>{{examinations.students}}</td>
+        <td>{{examinations.internalExaminer.name}}</td>
+        <td>{{examinations.externalExaminer.name}}</td>
+        <td>{{examinations.externalExaminer.phoneNo}}</td>
+        <td>{{examinations.externalExaminer.email}}</td>
+        <td>{{examinations.timeSlot.timeSlot}}</td>
+        <td>{{examinations.date}}</td>
+        <td>{{examinations.venue.venue}}</td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,77 @@
+
+<h1>
+    Add Teacher
+</h1>
+
+
+
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" name="name" ngModel #name="ngModel" matInput required>
+        <mat-error *ngIf="name.hasError('required')">Field cannot be empty.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" name="email" ngModel #email="ngModel" matInput email required>
+        <mat-error *ngIf="email.hasError('required')">Field cannot be empty.</mat-error>
+        <mat-error *ngIf="email.hasError('email')">Please enter valid email.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Phone Number</mat-label>
+        <input type="text" name="phoneNo" ngModel #phoneNo="ngModel" matInput required pattern="[0-9 +]{10,}" maxlength="14">
+        <mat-error *ngIf="phoneNo.hasError('required')">Field cannot be empty.</mat-error>
+        <mat-error *ngIf="phoneNo.hasError('pattern')"> Please enter valid phone number.</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <mat-label>Subject</mat-label>
+        <mat-select (selectionChange)="addSubject($event.value)">
+            <mat-option  *ngFor="let subject of subjects; let i = index;" [value]="subject.id">
+                {{ i+1 }}. {{ subject.subjectCode }} - {{ subject.subjectName }}
+              </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+
+    <br>
+    <br>
+
+    <div>
+        <h2>Added Subjects:</h2>
+    
+        <ul class="list-group">
+            <li *ngFor="let subject of subjectsToAdd; let i = index" class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="m-0">{{ i+1 }}. {{ subject.subjectCode }} - {{ subject.subjectName }}</p>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="removeSubject(subject)">X</button>
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+    <br>
+    <br>
+      
+      <button type="submit" mat-raised-button color="primary" [disabled]="!f.valid">Submit</button>
+      &nbsp;
+      <a  mat-raised-button color="warn" (click)="goBack()">Back</a>
+</form>
+
+<br>
+
+
+

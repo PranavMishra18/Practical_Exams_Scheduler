@@ -1,0 +1,25 @@
+<h1>Time Slots</h1>
+
+<br>
+
+<button mat-raised-button color="primary" (click)="addTimeSlot()"> <mat-icon>add</mat-icon> Add Time Slot</button>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">S No.</th>
+        <th scope="col">Time Slot</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timeSlot of theTimeSlots; let i = index">
+        <th>{{i+1}}</th>
+        <td>{{timeSlot.timeSlot}}</td>
+        <td>   
+            <!-- <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button> -->
+            <button mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

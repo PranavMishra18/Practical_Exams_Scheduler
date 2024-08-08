@@ -1,0 +1,43 @@
+<h1>Teachers</h1>
+
+<br>
+
+<button mat-raised-button color="primary" (click)="addTeacher()"> <mat-icon>add</mat-icon> Add Teacher</button>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">S No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone No.</th>
+        <th scope="col">Email</th>
+        <th scope="col">Subject Name</th>
+        <th scope="col">Subject Code</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of teachers; let i = index">
+        <th>{{i+1}}</th>
+        <td>{{teacher.name}}</td>
+        <td>{{teacher.phoneNo}}</td>
+        <td>{{teacher.email}}</td>
+        <td>
+          <ng-container *ngFor="let subject of teacher.subjects; let j = index">
+            {{subject.subjectCode}}{{j !== teacher.subjects.length - 1 ? ' | ' : ''}}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container *ngFor="let subject of teacher.subjects; let j = index">
+            {{subject.subjectName}}{{j !== teacher.subjects.length - 1 ? ' | ' : ''}}
+          </ng-container>
+        </td>
+        <td>   
+          <button title="Edit Teacher" mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+          <button title="View Teacher" mat-mini-fab color="accent"><mat-icon>remove_red_eye</mat-icon></button>
+          <button title="Delete Teacher" mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
